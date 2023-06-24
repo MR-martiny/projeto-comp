@@ -4,7 +4,7 @@
   "description": "projeto trainee em nodejs, express e mongoDB",
   "main": "./src/index.js",
   "scripts": {
-    "serve": "nodemon --exec babel-node .src/index.js"
+    "serve": "nodemon --exec babel-node ./src/index.js"
   },
   "author": "mathias",
   "license": "ISC",

@@ -1,17 +1,15 @@
 import express, { Router } from 'express';
 import bodyParser from 'body-parser';
+import {Portifolio} from '@/app/controllers';
+
 
 const app = express();
-const port = 3000;
+const port = 3000; 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const router = new Router();
+app.use ('/portifolio', Portifolio );
 
-router.get('/', (req, res)=>{
-    return res.status(200).send ({message: 'hello world'})
-});
-
-console.log('Servidor rodando no Link http://localhost:${port}');
+console.log(`Servidor rodando no link http://localhost:${port}`);
 app.listen(port);
