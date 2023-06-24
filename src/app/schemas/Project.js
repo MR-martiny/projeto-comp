@@ -32,4 +32,4 @@ const projectSchema = new mongoose.Schema({              //um esquema é a defin
     },
 });
 
-export default mongoose.model('Project', ProjectSchema);
+export default mongoose.model('Project', projectSchema);
