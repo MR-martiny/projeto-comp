@@ -7,8 +7,45 @@ const router = new Router();
 //tudo abaixo daqui é o crud
 
 router.get('/',(req, res)  => {
-
+        Project.find()
+        .then(data => {
+            const projects = data.map(project =>{
+                return {title: project.title, category: project.category};          //isso aqui é pramostrar todos os portifoliosde uma vez                   
+            });
+            res.send(projects);
+        }).catch(error =>{
+            console.error('Erro ao salvar no Banco de Dados',error);
+            res
+            .status(400)
+            .send({
+                error: 
+                'Não foi porssivel obter os  dados do projeto, tente novamente'
+            }); //se a função deu errado entra aqui
+        });
 });
+
+
+router.get('/id/:projectId',(req, res)  => {
+    Project.findbyId(req.params.projectdId)
+    .then(data => {
+        const projects = data.map(project =>{
+            return {title: project.title, category: project.category};          //isso aqui é pramostrar todos os portifoliosde uma vez                   
+        });
+        res.send(projects);
+    }).catch(error =>{
+        console.error('Erro ao salvar no Banco de Dados',error);
+        res
+        .status(400)
+        .send({
+            error: 
+            'Não foi porssivel obter os  dados do projeto, tente novamente'
+        }); //se a função deu errado entra aqui
+    });
+});
+
+router.get('/slug/projectSlug',(req, res)  => {});
+
+
 
 router.post('/',(req, res)  => {
     const {title, slug, description, category} = req.body;
